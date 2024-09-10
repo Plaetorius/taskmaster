@@ -1,0 +1,9 @@
+[package]
+name = "taskmaster"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+toml = "0.8.19"
+serde = { version = "1.0.210", features = ["derive"] }
+thiserror = "1.0.63"
