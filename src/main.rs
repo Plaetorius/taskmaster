@@ -1,16 +1,22 @@
 mod models;
 mod parsing;
+mod exec;
+
 use parsing::parse_config;
+use exec::exec_programs;
 
 fn main() {
-	let config = parse_config("config.toml");  // TODO Set a default value
+	let parsed_result = parse_config("config.toml");  // TODO Set a default value
 
-    match config {
+    let config = match parsed_result {
         Ok(config) => {
-            println!("{:#?}", config);
+			config
         }
         Err(e) => {
             println!("Error parsing config: {}", e);
+			return ;
         }
-    }
+    };
+
+	exec_programs(config);
 }

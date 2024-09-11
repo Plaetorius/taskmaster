@@ -13,6 +13,7 @@ pub enum ConfigError {
     Toml(#[from] toml::de::Error),
 }
 
+/// TODO write me
 pub fn parse_config(file_path: &str) -> Result<Config, ConfigError> {
 	let mut file = File::open(file_path)?;
 	let mut contents = String::new();
