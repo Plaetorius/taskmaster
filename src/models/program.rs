@@ -4,6 +4,7 @@ use serde::Deserialize;
 #[derive(Debug, Deserialize)]
 pub struct Program {
     pub cmd: String,
+	pub args: Vec<String>,
     pub numprocs: u16,
     pub umask: u16,
     pub workingdir: String,

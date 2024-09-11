@@ -1,5 +1,6 @@
 [programs.ls] # Maybe we can remove the "programs."
 cmd = "/bin/ls"
+args = ["-la"]
 numprocs = 1
 umask = 22
 workingdir = "/tmp" # Set it in the env?
