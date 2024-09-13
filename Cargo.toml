@@ -6,5 +6,5 @@ edition = "2021"
 [dependencies]
 toml = "0.8.19"
 serde = { version = "1.0.210", features = ["derive"] }
-thiserror = "1.0.63"
-
+thiserror = "1.0.63" # TODO remove me i shouldn't be here
+libc = "0.2.158"

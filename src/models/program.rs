@@ -11,7 +11,7 @@ pub struct Program {
     pub autostart: bool,
     pub autorestart: String,
     pub exitcodes: Vec<u8>,
-    pub startretries: i16,
+    pub startretries: u16,
     pub starttime: u16, // TODO make a list of consts
     pub stopsignal: String,
     pub stoptime: u16,

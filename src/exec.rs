@@ -14,12 +14,10 @@ pub fn exec_programs(config: Config) {
 		
 		// Setup stdout and stderr
 		// TODO check if stdour or stderr may not be given
-		let mut file = File::create(program.1.stdout.clone()).unwrap();
-		let stdout = Stdio::from(file);
-		file = File::create(program.1.stderr.clone()).unwrap();
-		let stderr = Stdio::from(file);
-
-		// let outputs = [Stdio::from(files[0]), Stdio::from(files[1])];
+		let file_stdout = File::create(program.1.stdout.clone()).unwrap();
+		let file_stderr = File::create(program.1.stderr.clone()).unwrap();
+		let stdout = Stdio::from(file_stdout);
+		let stderr = Stdio::from(file_stderr);
 
 		// Create command
 		let mut program_process = Command::new(clone_program.cmd.clone());
@@ -37,10 +35,9 @@ pub fn exec_programs(config: Config) {
 			// Distinction on result status
 			match program_process.status() {
 				Ok(status) => {
-					if status.success() {
-						println!("Program {} executed successfully!", clone_name);
-					} else {
-						println!("Program {} failed!", clone_name);
+					match status.code() {
+						Some(code) => println!("Exit code: {}", code),
+						None => println!("Process was stopped by a signal"),
 					}
 				}
 				Err(e) => {

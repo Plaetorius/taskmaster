@@ -3,7 +3,7 @@ cmd = "/bin/ls"
 args = ["-la"]
 numprocs = 1
 umask = 22
-workingdir = "/tmp" # Set it in the env?
+workingdir = "." # Set it in the env?
 autostart = true
 autorestart = "unexpected"
 exitcodes = [0, 2]
@@ -33,3 +33,21 @@ stdout = "/tmp/echo.stdout"
 stderr = "/tmp/echo.stderr"
 
 [programs.echo.env]
+
+[programs.false]
+cmd = "/usr/bin/false"
+args = ["--version"]
+numprocs = 1
+umask = 22
+workingdir = "." # Set it in the env?
+autostart = true
+autorestart = "unexpected"
+exitcodes = [0, 2]
+startretries = 3
+starttime = 5
+stopsignal = "TERM"
+stoptime = 10
+stdout = "/tmp/false.stdout"
+stderr = "/tmp/false.stderr"
+
+[programs.false.env]
