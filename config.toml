@@ -15,3 +15,21 @@ stdout = "/tmp/ls.stdout"
 stderr = "/tmp/ls.stderr"
 
 [programs.ls.env]
+
+[programs.echo] # Maybe we can remove the "programs."
+cmd = "/usr/bin/echo"
+args = ["-n", "This is an ECHO test"]
+numprocs = 1
+umask = 22
+workingdir = "/tmp" # Set it in the env?
+autostart = true
+autorestart = "unexpected"
+exitcodes = [0, 2]
+startretries = 3
+starttime = 5
+stopsignal = "TERM"
+stoptime = 10
+stdout = "/tmp/echo.stdout"
+stderr = "/tmp/echo.stderr"
+
+[programs.echo.env]

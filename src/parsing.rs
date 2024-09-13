@@ -2,7 +2,7 @@ use crate::models::Config;
 use std::fs::File;
 use std::io::{self, Read};
 use toml;
-use thiserror::Error;
+use thiserror::Error; // TODO might be illegal
 
 #[derive(Debug, Error)]
 pub enum ConfigError {
